@@ -2,7 +2,8 @@ source 'http://rubygems.org'
 gem 'rails', '4.2.4'
 gem 'sqlite3-ruby', '1.3.1', :require => 'sqlite3'
 gem 'sqlite3'
-
+gem 'jquery-rails'
+gem 'turbolinks'
 
 
 group :development do
