@@ -1,12 +1,35 @@
-Rails.application.routes.draw do
-  get 'pages/home'
+SampleApp::Application.routes.draw do
 
-  get 'pages/contact'
+get 'users/new'
 
-  get "pages/about"
+root 'pages#home'
 
-#sam to dodałem, więc nie wiem
-  get "pages/help"
+get '/contact' => 'pages#contact'
+get '/about' => 'pages#about'
+get '/help' => 'pages#help'
+get '/signup' => 'users#new'
+
+
+
+# z tutoriala, ale nie działa
+# match '/contact', :to => 'pages#contact'
+# match '/about', :to => 'pages#about'
+# match '/help', :to => 'pages#help'
+
+
+#########################################
+
+# Rails.application.routes.draw do
+  # get 'users/new'
+
+#   get 'pages/home'
+
+#   get 'pages/contact'
+
+#   get "pages/about"
+
+# #sam to dodałem, więc nie wiem
+#   get "pages/help"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
