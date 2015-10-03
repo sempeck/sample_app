@@ -1,14 +1,3 @@
-# class User < ActiveRecord::Base
-#    # attr_accessible(:name, :email)
-#    # attr_accessor :name, :email
-#      validates :name,  presence: true, length: { maximum: 50 }
-#      VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
-#      validates :email, presence: true, length: { maximum: 255 },
-#                     format: { with: VALID_EMAIL_REGEX },
-#                     uniqueness: { case_sensitive: false }
-# end
-
-
 require 'digest'
 
 class User < ActiveRecord::Base
@@ -29,11 +18,19 @@ class User < ActiveRecord::Base
         encrypted_password == encrypt(submitted_password)
     end
 
+####potencjalny błąd
     def self.authenticate(email, submitted_password)
       user = find_by_email(email)
         return nil if user.nil?
         return user if user.has_password?(submitted_password)
     end
+
+def self.authenticate_with_salt(id, cookie_salt)
+user = find_by_id(id)
+(user && user.salt == cookie_salt) ? user : nil
+end
+
+
 private
     def encrypt_password
       self.salt = make_salt if new_record?

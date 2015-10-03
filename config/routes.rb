@@ -3,20 +3,19 @@ SampleApp::Application.routes.draw do
 # get 'users/new'
 resources :users
 
-root 'pages#home'
+resources :sessions, :only => [:new, :create, :destroy]
+  get '/signup', :to => 'users#new'
+  get '/signin', :to => 'sessions#new'
+  get '/signout', :to => 'sessions#destroy'
 
-get '/contact' => 'pages#contact'
-get '/about' => 'pages#about'
-get '/help' => 'pages#help'
-get '/signup' => 'users#new'
+  root 'pages#home'
+
+  get '/contact' => 'pages#contact'
+  get '/about' => 'pages#about'
+  get '/help' => 'pages#help'
+  get '/signup' => 'users#new'
 
 
-
-
-# z tutoriala, ale nie działa
-# match '/contact', :to => 'pages#contact'
-# match '/about', :to => 'pages#about'
-# match '/help', :to => 'pages#help'
 
 
 #########################################
