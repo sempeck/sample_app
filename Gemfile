@@ -8,7 +8,7 @@ gem 'gravatar_image_tag', '0.1.0'
 
 gem 'protected_attributes'
 
-# gem 'will_paginate', '3.0.pre2'
+gem 'will_paginate', '3.0.7'
 
 group :development do
 gem 'rspec-rails'#, '2.6.1.beta1'

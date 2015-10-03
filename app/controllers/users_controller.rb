@@ -3,9 +3,9 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit, :update]
 
   def index
-    @title = "All users"
-    @users = User.all
-   
+        @title = "All users"
+        # @users = User.all
+        @users = User.paginate(:page => params[:page])
   end
 
   def show
@@ -43,6 +43,9 @@ class UsersController < ApplicationController
         @title = "Edit user"
         render 'edit'
       end
+
+      
+
   end
 
 private
